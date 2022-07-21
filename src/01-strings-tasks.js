@@ -222,8 +222,12 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  // throw new Error('Not implemented');
+  if ((width || height) < 2) return null;
+  const h = `│${' '.repeat(width - 2)}│\n`.repeat(height - 2);
+  const w = '─'.repeat(width - 2);
+  return `┌${w}┐\n${h}└${w}┘\n`;
 }
 
 
@@ -243,8 +247,30 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  const string1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const string2 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+  const arr = string1.split('');
+  const arr2 = string2.split('');
+  const strArr = str.split('');
+  const newArr = [];
+
+  // eslint-disable-next-line no-plusplus
+  for (let j = 0; j <= strArr.length; j++) {
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === strArr[j]) {
+        newArr.push(arr2[i]);
+      // eslint-disable-next-line max-len
+      } else if ((str.charCodeAt(j) < 65 || str.charCodeAt(j) > 97) && (str.charCodeAt(j) < 97 || str.charCodeAt(j) > 122)) {
+        newArr.push(strArr[j]);
+        break;
+      }
+    }
+  }
+
+  return newArr.join('');
 }
 
 /**
