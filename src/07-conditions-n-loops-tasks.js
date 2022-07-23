@@ -50,10 +50,10 @@ function getFizzBuzz(num) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  // throw new Error('Not implemented');
+  return n ? n * getFactorial(n - 1) : 1;
 }
-
 
 /**
  * Returns the sum of integer numbers between n1 and n2 (inclusive).
@@ -67,8 +67,15 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  // throw new Error('Not implemented');
+
+  const arr = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = n1; i <= n2; i++) {
+    arr.push(i);
+  }
+  return arr.reduce((sum, num) => sum + num, 0);
 }
 
 
@@ -87,8 +94,16 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line prefer-rest-params
+  const arr = Array.from(arguments);
+  const hypotenuse = Math.max(...arr);
+  const legs = arr.filter((item) => item !== hypotenuse);
+  if (a === b && b === c && c === a) { return true; }
+  // eslint-disable-next-line no-restricted-properties
+  if (Math.sqrt(Math.pow(legs[0], 2) + Math.pow(legs[1], 2)) === hypotenuse) { return true; }
+  return false;
 }
 
 
@@ -171,8 +186,11 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  // throw new Error('Not implemented');
+  const arr = Array.from(str);
+  // eslint-disable-next-line no-unused-expressions
+  return arr.filter((item) => arr.indexOf(item) === arr.lastIndexOf(item))[0];
 }
 
 
@@ -215,8 +233,10 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // throw new Error('Not implemented');
+  const arr = str.split(' ');
+  return arr.map((item) => item.split('').reverse().join('')).reverse().join(' ');
 }
 
 
@@ -232,8 +252,9 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  // throw new Error('Not implemented');
+  return Number(num.toString().split('').reverse().join(''));
 }
 
 
@@ -258,8 +279,12 @@ function reverseInteger(/* num */) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+  // ccn.toString().split('').reduce((total, num) => Number(total) + Number(num), 0));
+  // const arr = Array.from(ccn);
+
 }
+// console.log(isCreditCardNumber(79927398713))
 
 /**
  * Returns the digital root of integer:
@@ -275,8 +300,10 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  // throw new Error('Not implemented');
+  const sum = num.toString().split('').reduce((total, item) => Number(total) + Number(item), 0);
+  return sum < 10 ? sum : getDigitalRoot(sum);
 }
 
 
@@ -302,7 +329,9 @@ function getDigitalRoot(/* num */) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
+  // let bracketArr = ['[]', '()', '{}', '<>', '</>']
+  // let arr = str.split('')
 }
 
 
@@ -366,9 +395,31 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct( m1, m2 ) {
+//   // throw new Error('Not implemented');
+let arr = m1.flat();
+let arr2 = m2.flat();
+
+let generalArr;
+let matrix = []
+ for (let i = 0; i < arr.length; i++) {
+  generalArr = []
+    for (let j = 0; j < arr2.length; j++) {
+      generalArr.push(arr[i] * arr2[j]);
+    }
+  }
+  let start = 0;
+  let end = 3;
+  while(end !== generalArr.length + 3) {
+  matrix.push(generalArr.splice(start, end))
+  start + 3;
+  end + 3;
+  }
+  console.log(matrix)
+  console.log(generalArr)
 }
+
+getMatrixProduct( [[ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ]], [[ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]])
 
 
 /**
