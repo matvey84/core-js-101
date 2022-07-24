@@ -44,10 +44,13 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line func-names
+  return function (num) {
+    return num ** exponent;
+  };
 }
-
 
 /**
  * Returns the polynom function of one argument based on specified coefficients.
@@ -169,10 +172,18 @@ function partialUsingArguments(/* fn, ...args1 */) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line func-names
+  let start = startFrom;
+  // eslint-disable-next-line func-names
+  return function () {
+    start += 1;
+    // eslint-disable-next-line no-param-reassign
+    startFrom = start;
+    return startFrom - 1;
+  };
 }
-
 
 module.exports = {
   getComposition,

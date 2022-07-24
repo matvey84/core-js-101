@@ -278,13 +278,32 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
+function isCreditCardNumber(ccn) {
   // throw new Error('Not implemented');
-  // ccn.toString().split('').reduce((total, num) => Number(total) + Number(num), 0));
-  // const arr = Array.from(ccn);
+  const arr = ccn.toString().split('').map((item) => Number(item));
+  const filteredEvenIndex = arr.filter((item, i) => i % 2 === 0);
+  const filteredOddIndex = arr.filter((item, i) => i % 2 !== 0);
+  if (arr.length % 2 === 0) {
+    const doubleEven = filteredEvenIndex.map((item) => item * 2);
+    const finalArrEven = [];
+    doubleEven.forEach((item) => {
+      // eslint-disable-next-line no-unused-expressions
+      finalArrEven.push(String(item / 10).split('.').reduce((total, num) => Number(total) + Number(num), 0));
+    });
+    const resultArr = [...finalArrEven, ...filteredOddIndex];
+    return resultArr.reduce((total, num) => Number(total) + Number(num), 0) % 10 === 0;
+  }
 
+  const doubleOdd = filteredOddIndex.map((item) => item * 2);
+  const finalArrOdd = [];
+  doubleOdd.forEach((item) => {
+    // eslint-disable-next-line no-unused-expressions
+    finalArrOdd.push(String(item / 10).split('.').reduce((total, num) => Number(total) + Number(num), 0));
+  });
+  const resultArr = [...finalArrOdd, ...filteredEvenIndex];
+  return resultArr.reduce((total, num) => Number(total) + Number(num), 0) % 10 === 0;
 }
-// console.log(isCreditCardNumber(79927398713))
+
 
 /**
  * Returns the digital root of integer:
@@ -355,8 +374,9 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  // throw new Error('Not implemented');
+  return num.toString(n);
 }
 
 
@@ -395,31 +415,48 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct( m1, m2 ) {
-//   // throw new Error('Not implemented');
-let arr = m1.flat();
-let arr2 = m2.flat();
+function getMatrixProduct(m1, m2) {
+  // throw new Error('Not implemented');
+  const arr = m1.flat();
+  const arr2 = m2.flat();
 
-let generalArr;
-let matrix = []
- for (let i = 0; i < arr.length; i++) {
-  generalArr = []
+  let generalArr;
+  const matrix = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < arr.length; i++) {
+    generalArr = [];
+    // eslint-disable-next-line no-plusplus
     for (let j = 0; j < arr2.length; j++) {
+      // eslint-disable-next-line no-plusplus
       generalArr.push(arr[i] * arr2[j]);
     }
   }
-  let start = 0;
-  let end = 3;
-  while(end !== generalArr.length + 3) {
-  matrix.push(generalArr.splice(start, end))
-  start + 3;
-  end + 3;
+  if (m1.length === 1 && m2.length === 1) {
+    return Array.of(generalArr.reduce((total, num) => total + num + 1, 0));
   }
-  console.log(matrix)
-  console.log(generalArr)
-}
 
-getMatrixProduct( [[ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ]], [[ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]])
+  const start = 0;
+  const end = 3;
+  while (end !== generalArr.length + 3) {
+    matrix.push(generalArr.splice(start, end));
+    // eslint-disable-next-line no-unused-expressions
+    start + generalArr.length / 2;
+    // eslint-disable-next-line no-unused-expressions
+    end + generalArr.length / 2;
+  }
+  return matrix;
+}
+// console.log(getMatrixProduct( [[1,0,0,0,1,0,0,0,1]], [[1,2,3,4,5,6,7,8,9]]))
+// console.log(getMatrixProduct( [[1,2,3]], [[4,5,6]]))
+// console.log(getMatrixProduct( [
+//   [1, 2, 0],
+//   [0, 1, 0],
+//   [0, 0, 1],
+// ], [
+//   [1, 3, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ]));
 
 
 /**
