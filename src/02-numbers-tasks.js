@@ -92,14 +92,12 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  // throw new Error('Not implemented');
   // eslint-disable-next-line no-nested-ternary
-  // const x = (a !== 0) ? b / a : (a === 0) ? a / b : b;
-  // const result = b < a ? Math.abs(x) : -x;
-  // return result;
+  const x = b <= 0 ? (0 - b) / a : (0 - b) / a;
+  return x;
 }
-
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -223,14 +221,20 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
-  // if (n >= 2 && n % 1 === 0 && n % n === 0 && n % 2 !== 0) {
-  //   return true;
-  // }
-  // return false;
+function isPrime(n) {
+  // throw new Error('Not implemented');
+  const resArr = [];
+  if ((n === 2)) { return true; }
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < arr.length; i++) {
+    if (n % arr[i] === 0) {
+      resArr.push(1);
+    }
+  }
+  if (n > 9) resArr.push(1);
+  return resArr.length === 2;
 }
-
 /**
  * Tries to convert value to number and returns it if conversion was successful;
  * otherwise returns default value passed as a second argument.

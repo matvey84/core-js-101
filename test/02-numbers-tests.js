@@ -33,7 +33,7 @@ describe('02-numbers-tasks', () => {
     assert.equal(tasks.getLinearEquationRoot(1, 8), -8);
     assert.equal(tasks.getLinearEquationRoot(5, 0), 0);
   });
-1, 8
+
   it.optional('getAngleBetweenVectors should return a angle (in radians) between two linear vectors', () => {
     assert.equal(tasks.getAngleBetweenVectors(1, 0, 0, 1), Math.PI / 2);
     assert.equal(tasks.getAngleBetweenVectors(0, 1, 0, -1), Math.PI);
