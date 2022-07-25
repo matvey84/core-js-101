@@ -68,7 +68,17 @@ function willYouMarryMe(isPositiveAnswer) {
  */
 function processAllPromises(/* array */) {
   throw new Error('Not implemented');
+  // return new Promise((resolve) => {
+  //   resolve(array);
+  // });
+  // return new Promise((resolve) => resolve(array));
 }
+// const promises = [processAllPromises(1), processAllPromises(3), processAllPromises(12)];
+//  const p = Promise.all(promises);
+//  p.then((res) => {
+//  console.log(res) // => [1, 2, 3]
+//  })
+
 
 /**
  * Return Promise object that should be resolved with value received from
@@ -91,7 +101,15 @@ function processAllPromises(/* array */) {
  */
 function getFastestPromise(/* array */) {
   throw new Error('Not implemented');
+  // return new Promise((resolve) => resolve(array));
 }
+// const promises = [
+//   Promise.resolve('first'),
+//   new Promise((resolve) => setTimeout(() => resolve('second'), 500)),
+// ];
+// // eslint-disable-next-line prefer-spread
+// const p = processAllPromises.apply(null, promises);
+// p.then((res) => res);
 
 /**
  * Return Promise object that should be resolved with value that is
