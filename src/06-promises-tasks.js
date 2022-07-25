@@ -100,9 +100,9 @@ function processAllPromises(array) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
-  // return new Promise((resolve) => resolve(array));
+function getFastestPromise(array) {
+  // throw new Error('Not implemented');
+  return Promise.race(array);
 }
 // const promises = [
 //   Promise.resolve('first'),
