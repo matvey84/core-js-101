@@ -259,16 +259,15 @@ function toArrayOfSquares(arr) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
 
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
-  // const resArr = [];
-  // while (arr.length) {
-  //   // eslint-disable-next-line no-shadow
-  //   const sum = arr.reduce((total, prev) => total + prev);
-  //   resArr.push(sum);
-  //   arr.pop();
-  // }
-  // return resArr.reverse();
+function getMovingSum(arr) {
+  // throw new Error('Not implemented');
+  const arr1 = [];
+  arr.reduce((sum, num) => {
+    const result = sum + num;
+    arr1.push(result);
+    return result;
+  }, 0);
+  return arr1;
 }
 
 /**
@@ -304,7 +303,11 @@ function getSecondItems(arr) {
  */
 function propagateItemsByPositionIndex(/* arr */) {
   throw new Error('Not implemented');
+  // const newArr = arr.map((item, i) => String(item).repeat(i + 1)).join(', ').split(' ');
+  // return newArr;
 }
+
+// console.log(propagateItemsByPositionIndex([));
 
 
 /**
@@ -531,9 +534,25 @@ function getIdentityMatrix(n) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line max-len
+  let range = start <= 0 ? (Math.abs(start) + Math.abs(end)) + 1 : Math.abs(end) - Math.abs(start) + 1;
+  // eslint-disable-next-line no-const-assign, no-unused-expressions
+  if (!range) range += 1;
+  const arr = [];
+  arr.length = range;
+  const arr1 = [start];
+  arr.fill();
+  arr.reduce((sum) => {
+    const result = sum + 1;
+    arr1.push(result);
+    return result;
+  }, start);
+  arr1.length = range;
+  return arr1;
 }
+// console.log(getIntervalArray(0,100))
 
 /**
  * Returns array containing only unique values from the specified array.

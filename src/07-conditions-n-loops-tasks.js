@@ -216,9 +216,16 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  // throw new Error('Not implemented');
+  const arr = [a, b];
+  // eslint-disable-next-line no-shadow
+  arr.sort((a, b) => a - b);
+  const leftBracket = isStartIncluded ? '[' : '(';
+  const rightBracket = isEndIncluded ? ']' : ')';
+  return `${leftBracket}${arr.join(', ')}${rightBracket}`;
 }
+// console.log(getIntervalString( 0, 1, true, false ))
 
 
 /**
@@ -348,10 +355,25 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(/* str */) {
-  // throw new Error('Not implemented');
-  // let bracketArr = ['[]', '()', '{}', '<>', '</>']
-  // let arr = str.split('')
+  throw new Error('Not implemented');
+  // if (str.length % 2 !== 0) return false;
+  // const arr = str.split('').map((item) => String(item));
+  // const bracketsArr = Array.from(new Set(arr))//.sort();
+
+  // if (bracketsArr.length % 2 !== 0) return false;
+
+  // let shift = 0
+  // let start = 0
+  // let end = 1
+  // let resArr = []
+  // console.log(bracketsArr)
+  // for(let i = 0; i < bracketsArr.length; i++){
+  //   resArr.push(bracketsArr[i] !== bracketsArr[(bracketsArr.length - 1) - shift])
+  //   shift += 1
+  // }
+  //   console.log(resArr);
 }
+// console.log(isBracketsBalanced('[[][][[]]]'))
 
 
 /**
@@ -416,35 +438,35 @@ function getCommonDirectoryPath(/* pathes */) {
  *
  */
 function getMatrixProduct(m1, m2) {
-  // throw new Error('Not implemented');
-  const arr = m1.flat();
-  const arr2 = m2.flat();
+  throw new Error('Not implemented');
+  // const arr = m1.flat();
+  // const arr2 = m2.flat();
 
-  let generalArr;
-  const matrix = [];
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < arr.length; i++) {
-    generalArr = [];
-    // eslint-disable-next-line no-plusplus
-    for (let j = 0; j < arr2.length; j++) {
-      // eslint-disable-next-line no-plusplus
-      generalArr.push(arr[i] * arr2[j]);
-    }
-  }
-  if (m1.length === 1 && m2.length === 1) {
-    return Array.of(generalArr.reduce((total, num) => total + num + 1, 0));
-  }
+  // let generalArr;
+  // const matrix = [];
+  // // eslint-disable-next-line no-plusplus
+  // for (let i = 0; i < arr.length; i++) {
+  //   generalArr = [];
+  //   // eslint-disable-next-line no-plusplus
+  //   for (let j = 0; j < arr2.length; j++) {
+  //     // eslint-disable-next-line no-plusplus
+  //     generalArr.push(arr[i] * arr2[j]);
+  //   }
+  // }
+  // if (m1.length === 1 && m2.length === 1) {
+  //   return Array.of(generalArr.reduce((total, num) => total + num + 1, 0));
+  // }
 
-  const start = 0;
-  const end = 3;
-  while (end !== generalArr.length + 3) {
-    matrix.push(generalArr.splice(start, end));
-    // eslint-disable-next-line no-unused-expressions
-    start + generalArr.length / 2;
-    // eslint-disable-next-line no-unused-expressions
-    end + generalArr.length / 2;
-  }
-  return matrix;
+  // const start = 0;
+  // const end = 3;
+  // while (end !== generalArr.length + 3) {
+  //   matrix.push(generalArr.splice(start, end));
+  //   // eslint-disable-next-line no-unused-expressions
+  //   start + generalArr.length / 2;
+  //   // eslint-disable-next-line no-unused-expressions
+  //   end + generalArr.length / 2;
+  // }
+  // return matrix;
 }
 // console.log(getMatrixProduct( [[1,0,0,0,1,0,0,0,1]], [[1,2,3,4,5,6,7,8,9]]))
 // console.log(getMatrixProduct( [[1,2,3]], [[4,5,6]]))
