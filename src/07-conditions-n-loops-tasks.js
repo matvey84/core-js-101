@@ -357,19 +357,15 @@ function getDigitalRoot(num) {
 function isBracketsBalanced(/* str */) {
   throw new Error('Not implemented');
   // if (str.length % 2 !== 0) return false;
-  // const arr = str.split('').map((item) => String(item));
-  // const bracketsArr = Array.from(new Set(arr))//.sort();
-
+  // const copyStr = str;
+  // const bracketsArr = copyStr.split('').map((item) => String(item));
+  // // const bracketsArr = Array.from(new Set(arr))//.sort();
   // if (bracketsArr.length % 2 !== 0) return false;
-
-  // let shift = 0
-  // let start = 0
-  // let end = 1
-  // let resArr = []
-  // console.log(bracketsArr)
-  // for(let i = 0; i < bracketsArr.length; i++){
-  //   resArr.push(bracketsArr[i] !== bracketsArr[(bracketsArr.length - 1) - shift])
+  // const resArr = [];
+  // for (let i = 0; i < bracketsArr.length / 2; i++){
+  //   resArr.push(bracketsArr[i] === bracketsArr[(bracketsArr.length - i) -1])
   //   shift += 1
+  //   console.log(str.charCodeAt(i), str.charCodeAt((bracketsArr.length - i)-1))
   // }
   //   console.log(resArr);
 }

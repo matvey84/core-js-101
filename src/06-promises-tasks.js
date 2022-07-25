@@ -30,8 +30,29 @@
  */
 function willYouMarryMe(/* isPositiveAnswer */) {
   throw new Error('Not implemented');
+  // return new Promise((resolve, reject) => {
+  //   if (isPositiveAnswer) {
+  //     setTimeout(() => resolve('Hooray!!! She said "Yes"!'), 1000);
+  //   }
+  //   if (!isPositiveAnswer) {
+  //     setTimeout(() => resolve('Oh no, she said "No".'), 2000);
+  //   }
+  //   // setTimeout(() => reject(new Error('Error: Wrong parameter is passed!)), 1000);
+  //   // eslint-disable-next-line no-empty
+  //   if (typeof isPositiveAnswer !== 'boolean') {
+  //     // reject(new Error('Error: Wrong parameter is passed!));
+  //     // eslint-disable-next-line prefer-promise-reject-errors
+  //     setTimeout(() => reject('Error: Wrong parameter is passed!'), 2500);
+  //   }
+  // });
 }
-
+// const p1 = willYouMarryMe(true);
+// p1.then((answer) => console.log(answer));
+// const p2 = willYouMarryMe(false);
+// p2.then((answer) => console.log(answer)); // 'Oh no, she said "No".';
+// const p3 = willYouMarryMe();
+// p3.then((answer) => console.log(answer))
+//   .catch((error) => console.log(error.message)); // 'Error: Wrong parameter is passed!
 
 /**
  * Return Promise object that should be resolved with array containing plain values.
