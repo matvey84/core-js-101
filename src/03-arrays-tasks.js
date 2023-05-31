@@ -361,9 +361,20 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  // throw new Error('Not implemented');
+  const commonArr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const filteredArr = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < commonArr.length; i++) {
+    // eslint-disable-next-line no-plusplus
+    for (let j = 0; j < arr.length; j++) {
+      if (commonArr[i] === arr[j]) { filteredArr.push(commonArr[i]); }
+    }
+  }
+  return filteredArr;
 }
+sortDigitNamesByNumericOrder(['nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one', 'zero']);
 
 /**
  * Returns the sum of all items in the specified array of numbers
@@ -462,27 +473,12 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
-  // eslint-disable-next-line no-self-compare
-  // if (arr.some((item) => item.country === item.country)) {
-  //   // eslint-disable-next-line array-callback-return, consistent-return
-  //   return arr.sort((a, b) => {
-  //     console.log('===')
-  //     if (b.country === a.country) {
-  //       return 0;
-  //     }
-  //   // eslint-disable-next-line array-callback-return, consistent-return
-  //   });
-  // }
-  // // eslint-disable-next-line array-callback-return, consistent-return
-  // return arr.sort((a, b) => {
-  //    console.log('!==')
-  //   if (a.country > b.country) {
-
-  //     return 1;
-  //   }
-  // });
+function sortCitiesArray(arr) {
+  // throw new Error('Not implemented');
+  return arr.map((obj) => Object.values(obj).join(' ')).sort().map((string) => string.replace(' ', '$').split('$')).map((array) => ({
+    country: array[0],
+    city: array[1],
+  }));
 }
 
 /**
