@@ -301,14 +301,18 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
-  // const newArr = arr.map((item, i) => String(item).repeat(i + 1)).join(', ').split(' ');
-  // return newArr;
+function propagateItemsByPositionIndex(arr) {
+  // throw new Error('Not implemented');
+  const newArr = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < arr.length; i++) {
+    // eslint-disable-next-line no-plusplus
+    for (let j = 1; j <= i + 1; j++) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
 }
-
-// console.log(propagateItemsByPositionIndex([));
-
 
 /**
  * Returns the 3 largest numbers from the specified array
@@ -374,7 +378,6 @@ function sortDigitNamesByNumericOrder(arr) {
   }
   return filteredArr;
 }
-sortDigitNamesByNumericOrder(['nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one', 'zero']);
 
 /**
  * Returns the sum of all items in the specified array of numbers

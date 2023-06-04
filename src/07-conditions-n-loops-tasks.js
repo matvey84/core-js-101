@@ -354,22 +354,24 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
-  // if (str.length % 2 !== 0) return false;
-  // const copyStr = str;
-  // const bracketsArr = copyStr.split('').map((item) => String(item));
-  // // const bracketsArr = Array.from(new Set(arr))//.sort();
-  // if (bracketsArr.length % 2 !== 0) return false;
-  // const resArr = [];
-  // for (let i = 0; i < bracketsArr.length / 2; i++){
-  //   resArr.push(bracketsArr[i] === bracketsArr[(bracketsArr.length - i) -1])
-  //   shift += 1
-  //   console.log(str.charCodeAt(i), str.charCodeAt((bracketsArr.length - i)-1))
-  // }
-  //   console.log(resArr);
+function isBracketsBalanced(str) {
+  // throw new Error('Not implemented');
+  if (str.length % 2 !== 0) return false;
+  const bracketsArr = str.split('').map((brackets) => brackets.charCodeAt(0));
+  const resArr = [];
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < bracketsArr.length; i++) {
+    if (!resArr.length) {
+      resArr.push(bracketsArr[i]);
+    } else if (resArr.at(-1) === bracketsArr[i] || Math.abs(bracketsArr[i] - resArr.at(-1)) > 2) {
+      resArr.push(bracketsArr[i]);
+    }
+    if (bracketsArr[i] - resArr.at(-1) === 2 || bracketsArr[i] - resArr.at(-1) === 1) {
+      resArr.pop();
+    }
+  }
+  return !resArr.length;
 }
-// console.log(isBracketsBalanced('[[][][[]]]'))
 
 
 /**
@@ -507,10 +509,38 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  // throw new Error('Not implemented');
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < position.length; i++) {
+    // eslint-disable-next-line no-plusplus
+    // if (position[i].every((sign) => sign === 'X')) {
+    //   return 'X';
+    // } if (position[i].every((sign) => sign === '0')) {
+    //   return '0';
+    // }
+    // eslint-disable-next-line no-plusplus
+    for (let j = 0; i < position[i].length; j++) {
+      if (position[i][j] === 'X' || position[i][j] === '0') { return position[i][j]; }
+    }
+  }
+  return undefined;
 }
 
+// // console.log(evaluateTicTacToePosition([
+// //   ['0', '0', '0'],
+// //   [, 'X'],
+// //   ['X', , 'X'],
+// // ]));
+// console.log(evaluateTicTacToePosition([
+//   [   , '0', '0'],
+//   ['X', 'X', 'X'],
+//   ['0',    , '0'],
+// ]));
+// // console.log(evaluateTicTacToePosition([[ 'X',   ,'0' ],
+// // [    ,'X','0' ],
+// // [    ,   ,'X' ]],
+// // ));
 
 module.exports = {
   getFizzBuzz,

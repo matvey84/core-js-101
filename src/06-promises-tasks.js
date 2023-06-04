@@ -69,16 +69,7 @@ function willYouMarryMe(isPositiveAnswer) {
 function processAllPromises(array) {
   // throw new Error('Not implemented');
   return Promise.all(array);
-  // return new Promise((resolve) => {
-  //   resolve(array);
-  // });
-  // return new Promise((resolve) => resolve(array));
 }
-// const promises = [processAllPromises(1), processAllPromises(3), processAllPromises(12)];
-//  const p = Promise.all(promises);
-//  p.then((res) => {
-//  console.log(res) // => [1, 2, 3]
-//  })
 
 
 /**
@@ -131,7 +122,14 @@ function getFastestPromise(array) {
  */
 function chainPromises(/* array, action */) {
   throw new Error('Not implemented');
+  // Promise.resolve(res.reduce(action))
+  // return Promise.all(array).then((res) => new Promise((resolve) => resolve(res.reduce(action))));
 }
+// const promises = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+// const p = chainPromises(promises, (a, b) => a + b);
+// p.then((res) => {
+//  console.log(res);
+// });
 
 module.exports = {
   willYouMarryMe,
